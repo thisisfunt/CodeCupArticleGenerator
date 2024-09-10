@@ -9,4 +9,3 @@ async def hello():
     return {"answer": "Hello, world!"}
 
 
-
