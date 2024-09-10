@@ -1,6 +1,9 @@
 # CodeCupArticleGenerator
 
 
-# run project
-1. activate venv `venv\Scripts\activate.bat`
-2. run app with `fastapi dev main.py`
+## run project
+1. `cd backend`
+2. create venv `python -m venv venv`
+3. activate venv `venv\Scripts\activate.bat`
+4. install packages `pip install -r requirements.txt`
+5. run app with `fastapi dev main.py`
