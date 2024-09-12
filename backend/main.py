@@ -4,6 +4,7 @@ import models
 
 app = FastAPI()
 
+
 #done
 @app.get("/author/{author_id}")
 async def get_author(author_id: int):
@@ -18,21 +19,21 @@ async def get_author(author_id: int):
     }
 
 #done
+@app.put("/author/{author_id}")
+async def update_author(author_id: int, author: models.Author):
+    models.update_author(author_id, author)
+    return {
+        "status": "OK",
+        "id": 31
+    }
+
+#done
 @app.post("/author")
 async def create_author(author: models.Author):
     id = models.create_author(author)
     return {
         "status": "OK",
         "id": id
-    }
-
-#done
-@app.put("/author/{author_id}")
-async def put_author(author_id: int, author: models.Author):
-    models.put_author(author_id, author)
-    return {
-        "status": "OK",
-        "id": 31
     }
 
 #done
