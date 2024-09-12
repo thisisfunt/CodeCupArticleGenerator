@@ -37,7 +37,7 @@ def delete_author(id: int):
         session.delete(author)
         session.commit()
 
-def put_author(author_id: int, authorData: Author):
+def update_author(author_id: int, authorData: Author):
     with Session(schemas.engine) as session:
         author = session.query(schemas.Author).get(author_id)
         author.name = authorData.name
