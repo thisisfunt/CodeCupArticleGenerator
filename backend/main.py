@@ -4,34 +4,41 @@ import models
 
 app = FastAPI()
 
-
-@app.get("/author/{id}")
-async def get_author(id: int):
+#done
+@app.get("/author/{author_id}")
+async def get_author(author_id: int):
+    author = models.get_author(author_id)
     return {
-        "id": id,
-        "name": "Alex",
-        "description": "Young guy with broken heart",
-        "keywords": "Simple worlds and teen slang",
-        "specialization": "programming and music",
-        "tone": "not official"
+        "id": author_id,
+        "name": author.name,
+        "description": author.description,
+        "keywords": author.keywords,
+        "specialization": author.specialization,
+        "tone": author.tone
     }
 
+#done
 @app.post("/author")
 async def create_author(author: models.Author):
+    id = models.create_author(author)
+    return {
+        "status": "OK",
+        "id": id
+    }
+
+#done
+@app.put("/author/{author_id}")
+async def put_author(author_id: int, author: models.Author):
+    models.put_author(author_id, author)
     return {
         "status": "OK",
         "id": 31
     }
 
-@app.put("/author")
-async def put_author(author: models.Author):
-    return {
-        "status": "OK",
-        "id": 31
-    }
-
-@app.delete("/author")
-async def delete_author(author: models.Author):
+#done
+@app.delete("/author/{author_id}")
+async def delete_author(author_id: int):
+    models.delete_author(author_id)
     return {
         "status": "OK"
     }
