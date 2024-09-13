@@ -47,17 +47,20 @@ async def delete_author(author_id: int):
 
 @app.get("/trends")
 async def get_trends():
-    return ["Economic", "Politic", "Sport"]
+    trends = models.get_trends()
+    return trends
 
 
 @app.get("/themes/{trend}")
 async def get_themes(trend):
-    return ["Top the most popular sport in 2024", "How to start play basketball"]
+    themes = models.get_themes(trend)
+    return themes
 
 
 @app.get("/article")
-async def create_article(authorId: int, theme: str, min_len: int):
+async def create_article(author_id: int, theme: str, min_len: int):
+    article = models.create_article(author_id, theme, min_len)
     return {
-        "text": "askfhsdlfshfslsjsfksf;jfpqw idofujewpfd pwufwpofuwp owfowdfjwpo wdufpwdfowufpwfuw pfwdfw-fwfwofiw wdif-wdifwd-f0wifw",
+        "text": article,
         "pipelines": ["google.com", "yandex.ru"]
     }
